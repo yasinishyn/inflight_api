@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "watch": ["app", "config"],
+  "ext": "ts,json",
+  "ignore": ["**/*.spec.ts"],
+  "exec": "ts-node ./app/index.ts --allowSyntheticDefaultImports"
+}
