@@ -4,11 +4,13 @@ import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import methodOverride from 'koa-methodoverride';
 import logger from 'koa-logger';
+import cors from '@koa/cors';
 
 import config from '../config/config';
 import initDB from '../config/database';
 import router from './routes';
 import logErr from './services/logger.service';
+import corsOptions from './helpers/cors';
 
 const app = new Koa();
 
@@ -36,6 +38,11 @@ app.use(methodOverride((req) => {
     return method;
   }
 }));
+
+/**
+ * CORS
+ */
+app.use(cors(corsOptions));
 
 app.use(convert(json({ pretty: process.env.NODE_ENV !== 'production' })));
 
